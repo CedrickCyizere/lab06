@@ -2,13 +2,13 @@
 
 import datetime
 
+
+
 def main():
     """
     Create a datetime object for today's date
     """
-
-    # COMPLETE IMPLEMENTATION
-    todays_date = None
+    todays_date = datetime.date.today()
 
     date_list = every_lab(todays_date)
 
@@ -17,10 +17,8 @@ def main():
     for all the days when you have a lab
     print these dates in the format "Mon, 19 November 23"
     """
-
-    # COMPLETE IMPLEMENTATION
-
-    
+    for date in date_list:
+        print(date.strftime("%a, %d %B %y"))
 
 
 def every_lab(todays_date):
@@ -33,6 +31,17 @@ def every_lab(todays_date):
     This function will create datetimes objects for those labs, 
     add them to a list and then return this list
     """
+    end_date = datetime.date(2023, 12, 4)
+    one_week = datetime.timedelta(days=7)
+
+    lab_dates = []
+    
+    next_lab_date = todays_date
+    while next_lab_date <= end_date:
+        lab_dates.append(next_lab_date)
+        next_lab_date += one_week
+
+    return lab_dates
 
 if __name__ == "__main__":
     main()

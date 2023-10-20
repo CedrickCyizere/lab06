@@ -21,7 +21,7 @@ The following won't work immediately as you must as first add
 parameters to the function definition.
 """
 
-def within_deadline():
+def within_deadline(d1, d2, days):
     """
     The first parameter is a datetime, the second paramter is a
     datetime, and the first is guaranteed to be before the second 
@@ -30,7 +30,14 @@ def within_deadline():
     is, the first datetime + number of days), then return True; otherwise
     return False.
     """
-    return False
+    # Calculate the deadline date from d1
+    deadline_date = d1 + datetime.timedelta(days=days)
+    
+    # Check if d2 is within the deadline date
+    if d2 <= deadline_date:
+        return True
+    else:
+        return False
 
 
 def main():
@@ -44,17 +51,13 @@ def main():
         if within_deadline(d1, d2, 14):
             print("Dates ARE within 14 days of each other")
 
-            # Modify this line with a suitable call to
-            # strftime().
-            #
-            # |||||||||||||||||||||||||||||||
-            # VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-            print("The first date is a <???>")
+            # Modify this line with a suitable call to strftime().
+            day_of_week = d1.strftime("%A")
+            print(f"The first date is a {day_of_week}")
         else:
             print("Dates are NOT within 14 days of each other")
         
         white_space = "\n"
-
 
 if __name__ == "__main__":
     main()

@@ -34,13 +34,19 @@ The following won't work immediately as you must as first add
 parameters to the function definition.  
 """
 
-def before():
+def before(birthdates, year, month, day):
     """
     Given a list of datetimes along with a year, month, and day
     as integers, return the list of all datetimes that are before
     that year/month/day.
     """
-    return []
+    # Create a new datetime object
+    specified_date = datetime.datetime(year, month, day)
+    
+    # Filter the dates that come before the specified date
+    before_dates = [date for date in birthdates if date < specified_date]
+    
+    return before_dates
 
 
 def main():
