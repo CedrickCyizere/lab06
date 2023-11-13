@@ -41,7 +41,7 @@ def main():
     df = create_term_document_matrix(directory)
 
     # Read the query vector from stdin
-    query_vector = np.array([float(x) for x in input().split()])
+    query_vector = np.array([float(x) for x in sys.stdin.read().split()])
 
     # Compute the cosine similarity of the query vector with all document vectors
     similarities = {file: cosine_similarity(query_vector, df[file].values) for file in df.columns}
